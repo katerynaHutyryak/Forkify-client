@@ -27,7 +27,7 @@ export const AJAX = async function ({ auth0Client, url, method, uploadData }) {
     const fetchPro = fetch(url, {
         method,
         headers,
-        ...body,
+        ...{ body },
     })
 
     const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)])

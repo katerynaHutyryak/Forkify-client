@@ -38,8 +38,6 @@ export const loadRecipe = async function (id) {
         if (state.bookmarks.some((bookmark) => bookmark.id === id))
             state.recipe.bookmarked = true
         else state.recipe.bookmarked = false
-
-        console.log(state.recipe)
     } catch (err) {
         console.error(`${err} 💥💥💥💥`)
         throw err
@@ -54,7 +52,6 @@ export const loadSearchResults = async function (query) {
             url: `${RECIPES_URL}?search=${query}`,
             method: 'GET',
         })
-        console.log(data)
 
         state.search.results = data.data.recipes.map((rec) => {
             return {
@@ -116,10 +113,6 @@ const init = function () {
 }
 init()
 
-// const clearBookmarks = function () {
-//   localStorage.clear('bookmarks');
-// };
-
 export const uploadRecipe = async function (auth0Client, newRecipe) {
     const ingredients = Object.entries(newRecipe)
         .filter((entry) => entry[0].startsWith('ingredient') && entry[1] !== '')
@@ -146,7 +139,6 @@ export const uploadRecipe = async function (auth0Client, newRecipe) {
         ingredients,
         cookingDirections,
     }
-    console.log(recipe)
 
     const data = await AJAX({
         auth0Client,

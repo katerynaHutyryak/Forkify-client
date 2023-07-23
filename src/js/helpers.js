@@ -31,7 +31,6 @@ export const AJAX = async function ({ auth0Client, url, method, uploadData }) {
     })
 
     const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)])
-    console.log(res)
     const data = await res.json()
 
     if (!res.ok) throw new Error(`${data.message} (${res.status})`)

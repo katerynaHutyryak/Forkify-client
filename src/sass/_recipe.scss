@@ -119,6 +119,18 @@
         }
     }
 
+    .btn--bookmark {
+        margin-right: 1.6rem;
+    }
+
+    .btn--delete .hidden {
+        display: none;
+    }
+
+    .btn--edit .hidden {
+        display: none;
+    }
+
     ///////////
     // INGREDIENTS
     &__ingredients {

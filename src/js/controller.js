@@ -142,11 +142,38 @@ const controllLogout = () => {
     })
 }
 
-const init = async function () {
+const controlDeleteRecipe = async () => {
+    const id = window.location.hash.slice(1)
+
+    if (!id) throw Error('Can not delete recipe. Recipe id is missing')
+
+    recipeView.renderSpinner()
+
+    await model.deleteRecipe(auth0Client, id)
+
+    window.history.replaceState(null, '', location.origin)
+
+    model.state.search.results = model.state.search.results.filter(
+        (recipe) => recipe.id !== id
+    )
+
+    if (model.state.search.results.length) {
+        resultsView.render(model.getSearchResultsPage())
+    } else {
+        recipeView.renderMessage('')
+    }
+
+    recipeView.renderMessage(
+        'Recipe is deleted. </br> Search for a recipe or an ingredient.'
+    )
+}
+
+const init = async () => {
     bookmarksView.addHandlerRender(controlBookmarks)
     recipeView.addHandlerRender(controlRecipes)
     recipeView.addHandlerUpdateServings(controlServings)
     recipeView.addHandlerAddBookmark(controlAddBookmark)
+    recipeView.addHandlerDeleteRecipe(controlDeleteRecipe)
     searchView.addHandlerSearch(controlSearchResults)
     paginationView.addHandlerClick(controlPagination)
     addRecipeView.addHandlerUpload(controlAddRecipe)

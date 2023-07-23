@@ -150,3 +150,11 @@ export const uploadRecipe = async function (auth0Client, newRecipe) {
     state.recipe = createRecipeObject(data)
     addBookmark(state.recipe)
 }
+
+export const deleteRecipe = async function (auth0Client, id) {
+    await AJAX({
+        auth0Client,
+        url: `${RECIPES_URL}/${id}`,
+        method: 'DELETE',
+    })
+}

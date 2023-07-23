@@ -26,8 +26,8 @@ class AuthView {
         this._btnLogout.classList.remove('hidden')
     }
 
-    render(isAuthenticated) {
-        isAuthenticated ? this.renderLogout() : this.renderLogin()
+    addHandlerRender(handler) {
+        window.addEventListener('load', handler)
     }
 }
 

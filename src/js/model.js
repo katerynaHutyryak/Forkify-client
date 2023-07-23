@@ -10,6 +10,7 @@ export const state = {
         resultsPerPage: RES_PER_PAGE,
     },
     bookmarks: [],
+    user: {},
 }
 
 const createRecipeObject = function (data) {
@@ -23,7 +24,7 @@ const createRecipeObject = function (data) {
         cookingTime: recipe.cookingTime,
         ingredients: recipe.ingredients,
         cookingDirections: recipe.cookingDirections,
-        ...(recipe.key && { key: recipe.key }),
+        ...(recipe.userID && { userID: recipe.userID }),
     }
 }
 
@@ -59,7 +60,7 @@ export const loadSearchResults = async function (query) {
                 title: rec.title,
                 publisher: rec.publisher,
                 image: rec.image_url,
-                ...(rec.key && { key: rec.key }),
+                ...(rec.userID && { userID: rec.userID }),
             }
         })
         state.search.page = 1

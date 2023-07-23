@@ -14,7 +14,7 @@ import 'regenerator-runtime/runtime'
 
 let auth0Client = null
 
-window.onload = async () => {
+const controlAuthentication = async () => {
     auth0Client = await createAuth0Client({
         domain: 'dev-5hwndgvebevysof6.eu.auth0.com',
         clientId: 'Ks6wUNCpcoNJzejw9JC5yNupXMK183Qm',
@@ -23,23 +23,22 @@ window.onload = async () => {
         },
     })
 
-    const isAuthenticated = await auth0Client.isAuthenticated()
-    if (isAuthenticated) {
-        return authView.render(isAuthenticated)
-    }
-
     const query = window.location.search
     if (query.includes('code=') && query.includes('state=')) {
         // Process the login state
         await auth0Client.handleRedirectCallback()
 
-        const isAuthenticated = await auth0Client.isAuthenticated()
-
-        authView.render(isAuthenticated)
-
         // Use replaceState to redirect the user away and remove the querystring parameters
         window.history.replaceState({}, document.title, '/')
     }
+
+        const isAuthenticated = await auth0Client.isAuthenticated()
+
+    if (isAuthenticated) model.state.user = await auth0Client.getUser()
+
+    Object.keys(model.state.user).length
+        ? authView.renderLogout()
+        : authView.renderLogin()
 }
 
 const controlRecipes = async function () {
@@ -151,7 +150,9 @@ const init = async function () {
     searchView.addHandlerSearch(controlSearchResults)
     paginationView.addHandlerClick(controlPagination)
     addRecipeView.addHandlerUpload(controlAddRecipe)
+    authView.addHandlerRender(controlAuthentication)
     authView.addHandlerLogin(controllLogin)
     authView.addHandlerLogout(controllLogout)
 }
+
 init()

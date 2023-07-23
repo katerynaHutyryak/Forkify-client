@@ -1,6 +1,5 @@
 import { createAuth0Client } from '@auth0/auth0-spa-js'
 import * as model from './model.js'
-import { MODAL_CLOSE_SEC } from './config.js'
 import recipeView from './views/recipeView.js'
 import searchView from './views/searchView.js'
 import resultsView from './views/resultsView.js'
@@ -32,7 +31,7 @@ const controlAuthentication = async () => {
         window.history.replaceState({}, document.title, '/')
     }
 
-        const isAuthenticated = await auth0Client.isAuthenticated()
+    const isAuthenticated = await auth0Client.isAuthenticated()
 
     if (isAuthenticated) model.state.user = await auth0Client.getUser()
 
@@ -116,10 +115,6 @@ const controlAddRecipe = async function (newRecipe) {
         bookmarksView.render(model.state.bookmarks)
 
         window.history.pushState(null, '', `#${model.state.recipe.id}`)
-
-        setTimeout(function () {
-            addRecipeView.toggleWindow()
-        }, MODAL_CLOSE_SEC * 1000)
     } catch (err) {
         console.error('💥', err)
         addRecipeView.renderError(err.message)

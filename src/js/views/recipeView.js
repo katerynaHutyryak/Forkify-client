@@ -44,6 +44,11 @@ class RecipeView extends View {
         const userID = model.state.user.sub
         const recipe = this._data
 
+        const isHidden = () =>
+            userID && userID === recipe.userID ? '' : 'hidden'
+
+        const isBookmarked = () => (this._data.bookmarked ? '-fill' : '')
+
         return `
       <figure class="recipe__fig">
         <img src="${this._data.image}" alt="${
@@ -92,24 +97,22 @@ class RecipeView extends View {
         </div>
 
         <button class="btn--round btn--bookmark">
-          <svg class="">
-            <use href="${icons}#icon-bookmark${
-            this._data.bookmarked ? '-fill' : ''
-        }"></use>
+          <svg>
+            <use href="${icons}#icon-bookmark${isBookmarked()}"/>
           </svg>
         </button>
 
-        <button class="btn btn--delete ${
-            userID && userID === recipe.userID ? '' : 'hidden'
-        }">
-          Delete
+        <button class="btn--round btn--delete ${isHidden()}">
+          <svg>
+            <use href="${icons}#icon-delete"/>
+          </svg>
         </button>
 
-        <button class="btn btn--edit ${
-            userID && userID === recipe.userID ? '' : 'hidden'
-        }">
-        Edit
-      </button>
+        <button class="btn--round btn--edit ${isHidden()}">
+          <svg>
+            <use href="${icons}#icon-edit"/>
+          </svg>
+        </button>
       </div>
 
       <div class="recipe__ingredients">

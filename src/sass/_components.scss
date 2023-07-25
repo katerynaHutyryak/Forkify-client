@@ -97,7 +97,7 @@
     cursor: pointer;
     height: 4.5rem;
     width: 4.5rem;
-    // margin-left: auto;
+    margin-left: 1.6rem;
     transition: all 0.2s;
 
     display: flex;
@@ -116,6 +116,10 @@
         height: 2.5rem;
         width: 2.5rem;
         fill: #fff;
+    }
+
+    .hidden {
+        display: none;
     }
 }
 

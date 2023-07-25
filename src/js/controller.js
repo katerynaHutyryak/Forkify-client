@@ -20,6 +20,12 @@ const controlAuthentication = async () => {
         authorizationParams: {
             audience: 'https://forkify-fvelk.ondigitalocean.app/api/v1',
         },
+        /**
+         * Fixes: User is not logged in after page refresh
+         * https://github.com/auth0/auth0-react/blob/master/FAQ.md#1-user-is-not-logged-in-after-page-refresh
+         */
+        useRefreshTokens: true,
+        cacheLocation: 'localstorage',
     })
 
     const query = window.location.search

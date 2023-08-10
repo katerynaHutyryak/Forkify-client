@@ -11,6 +11,8 @@ import authView from './views/authView'
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 
+import '../sass/main.scss'
+
 let auth0Client = null
 
 const controlAuthentication = async () => {

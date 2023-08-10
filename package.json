@@ -1,11 +1,13 @@
 {
     "name": "forkify",
     "version": "1.0.0",
+    "type": "module",
     "description": "Recipe application",
     "source": "index.html",
     "scripts": {
-        "start": "parcel",
-        "build": "parcel build --dist-dir root"
+        "dev": "vite",
+        "build": "vite build --outDir root",
+        "preview": "vite preview"
     },
     "author": "Kateryna H.",
     "license": "ISC",
@@ -17,9 +19,9 @@
         "eslint-plugin-import": "^2.27.5",
         "eslint-plugin-n": "^16.0.1",
         "eslint-plugin-promise": "^6.1.1",
-        "parcel": "^2.9.3",
         "prettier": "^2.8.8",
-        "sass": "^1.63.6"
+        "sass": "^1.63.6",
+        "vite": "^4.4.5"
     },
     "dependencies": {
         "@auth0/auth0-spa-js": "^2.0.8",

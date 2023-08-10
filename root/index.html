@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
+        <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link
@@ -9,23 +9,22 @@
             rel="stylesheet"
         />
         <link
-            rel="icon shortcut"
-            href="./favicon.f98b6865.png"
+            rel="shortcut icon"
+            href="/assets/favicon-5ee87bae.png"
             type="image/x-icon"
         />
-        <link rel="stylesheet" href="./index.bfe11863.css" />
-        <script type="module" src="./index.79325ace.js"></script>
-        <script defer type="module" src="./index.4d3a67cd.js"></script>
+
+        
+        
         <title>forkify // Search over 1,000,000 recipes</title>
+      <script type="module" crossorigin src="/assets/index-27dc021b.js"></script>
+      <link rel="stylesheet" href="/assets/index-d2d80539.css">
     </head>
+
     <body>
         <div class="container">
             <header class="header">
-                <img
-                    src="./logo.8f52e69c.png"
-                    alt="Logo"
-                    class="header__logo"
-                />
+                <img src="/assets/logo-4482c1eb.png" alt="Logo" class="header__logo" />
                 <form class="search">
                     <input
                         type="text"
@@ -34,19 +33,20 @@
                     />
                     <button class="btn search__btn">
                         <svg class="search__icon">
-                            <use href="./icons.c14567a0.svg#icon-search" />
+                            <use href="/assets/icons-91da036f.svg#icon-search"></use>
                         </svg>
                         <span>Search</span>
                     </button>
                 </form>
+
                 <nav class="nav">
                     <ul class="nav__list">
                         <li class="nav__item">
                             <button class="nav__btn nav__btn--add-recipe">
                                 <svg class="nav__icon">
                                     <use
-                                        href="./icons.c14567a0.svg#icon-edit"
-                                    />
+                                        href="/assets/icons-91da036f.svg#icon-edit"
+                                    ></use>
                                 </svg>
                                 <span>Add recipe</span>
                             </button>
@@ -55,8 +55,8 @@
                             <button class="nav__btn nav__btn--bookmarks">
                                 <svg class="nav__icon">
                                     <use
-                                        href="./icons.c14567a0.svg#icon-bookmark"
-                                    />
+                                        href="/assets/icons-91da036f.svg#icon-bookmark"
+                                    ></use>
                                 </svg>
                                 <span>Bookmarks</span>
                             </button>
@@ -66,8 +66,8 @@
                                         <div>
                                             <svg>
                                                 <use
-                                                    href="./icons.c14567a0.svg#icon-smile"
-                                                />
+                                                    href="/assets/icons-91da036f.svg#icon-smile"
+                                                ></use>
                                             </svg>
                                         </div>
                                         <p>
@@ -82,18 +82,18 @@
                             <button class="nav__btn nav__btn--login">
                                 <svg class="nav__icon">
                                     <use
-                                        href="./icons.c14567a0.svg#icon-user"
-                                    />
+                                        href="/assets/icons-91da036f.svg#icon-user"
+                                    ></use>
                                 </svg>
                                 <span>Login</span>
                             </button>
                         </li>
                         <li class="nav__item">
-                            <button class="hidden nav__btn nav__btn--logout">
+                            <button class="nav__btn nav__btn--logout hidden">
                                 <svg class="nav__icon">
                                     <use
-                                        href="./icons.c14567a0.svg#icon-user"
-                                    />
+                                        href="/assets/icons-91da036f.svg#icon-user"
+                                    ></use>
                                 </svg>
                                 <span>Logout</span>
                             </button>
@@ -101,15 +101,18 @@
                     </ul>
                 </nav>
             </header>
+
             <div class="search-results">
                 <ul class="results"></ul>
+
                 <div class="pagination"></div>
             </div>
+
             <div class="recipe">
                 <div class="message">
                     <div>
                         <svg>
-                            <use href="./icons.c14567a0.svg#icon-smile" />
+                            <use href="/assets/icons-91da036f.svg#icon-smile"></use>
                         </svg>
                     </div>
                     <p>
@@ -119,7 +122,8 @@
                 </div>
             </div>
         </div>
-        <div class="hidden overlay"></div>
+
+        <div class="overlay hidden"></div>
         <div class="add-recipe-window hidden">
             <button class="btn--close-modal">&times;</button>
             <form class="upload">
@@ -133,7 +137,8 @@
                         placeholder="e.g. Pizza"
                         value="Pizza"
                     />
-                    <label>Image URL</label> <input name="image" type="text" />
+                    <label>Image URL</label>
+                    <input name="image" type="text" />
                     <label>Prep time</label>
                     <input
                         required
@@ -155,6 +160,7 @@
                         Test value
                     </textarea>
                 </div>
+
                 <div class="upload__column">
                     <h3 class="upload__heading">Ingredients</h3>
                     <label>Ingredient 1</label>
@@ -196,9 +202,10 @@
                         placeholder="Format: 'Quantity,Unit,Description'"
                     />
                 </div>
+
                 <button class="btn upload__btn">
                     <svg>
-                        <use href="./icons.c14567a0.svg#icon-upload-cloud" />
+                        <use href="/assets/icons-91da036f.svg#icon-upload-cloud"></use>
                     </svg>
                     <span>Upload</span>
                 </button>

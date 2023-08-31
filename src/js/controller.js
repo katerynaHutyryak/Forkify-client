@@ -21,7 +21,6 @@ const controlAuthentication = async () => {
         clientId: 'Ks6wUNCpcoNJzejw9JC5yNupXMK183Qm',
         authorizationParams: {
             audience: 'https://forkify-fvelk.ondigitalocean.app/api/v1',
-            redirect_uri: window.location.href,
         },
         /**
          * Fixes: User is not logged in after page refresh
@@ -133,7 +132,7 @@ const controlAddRecipe = async function (newRecipe) {
 const controllLogin = async () => {
     await auth0Client.loginWithRedirect({
         authorizationParams: {
-            redirect_uri: window.location.origin,
+            redirect_uri: window.location.origin + window.location.pathname,
         },
     })
 }
@@ -141,7 +140,7 @@ const controllLogin = async () => {
 const controllLogout = () => {
     auth0Client.logout({
         logoutParams: {
-            returnTo: window.location.origin,
+            returnTo: window.location.origin + window.location.pathname,
         },
     })
 }

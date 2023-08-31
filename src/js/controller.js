@@ -21,7 +21,7 @@ const controlAuthentication = async () => {
         clientId: 'Ks6wUNCpcoNJzejw9JC5yNupXMK183Qm',
         authorizationParams: {
             audience: 'https://forkify-fvelk.ondigitalocean.app/api/v1',
-            redirect_uri: 'https://katerynahutyryak.github.io/Forkify-client/',
+            redirect_uri: window.location.origin,
         },
         /**
          * Fixes: User is not logged in after page refresh

@@ -36,11 +36,7 @@ const controlAuthentication = async () => {
         await auth0Client.handleRedirectCallback()
 
         // Use replaceState to remove the querystring parameters
-        window.history.replaceState(
-            {},
-            '',
-            window.location.pathname.substring(1)
-        )
+        window.history.replaceState({}, '', window.location.pathname)
     }
 
     const isAuthenticated = await auth0Client.isAuthenticated()

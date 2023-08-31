@@ -133,7 +133,7 @@ export const uploadRecipe = async function (auth0Client, newRecipe) {
 
     const recipe = {
         title: newRecipe.title,
-        image_url: newRecipe.image,
+        image: newRecipe.image,
         publisher: newRecipe.publisher,
         cookingTime: +newRecipe.cookingTime,
         servings: +newRecipe.servings,

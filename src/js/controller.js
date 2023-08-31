@@ -35,8 +35,12 @@ const controlAuthentication = async () => {
         // Process the login state
         await auth0Client.handleRedirectCallback()
 
-        // Use replaceState to redirect the user away and remove the querystring parameters
-        window.history.replaceState({}, document.title, '/')
+        // Use replaceState to remove the querystring parameters
+        window.history.replaceState(
+            {},
+            '',
+            window.location.pathname.substring(1)
+        )
     }
 
     const isAuthenticated = await auth0Client.isAuthenticated()

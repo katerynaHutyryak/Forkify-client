@@ -1,7 +1,6 @@
 import View from './View.js'
 import * as model from '../model.js'
 
-import icons from 'url:../../img/icons.svg'
 import { Fraction } from 'fractional'
 
 class RecipeView extends View {
@@ -44,6 +43,11 @@ class RecipeView extends View {
         const userID = model.state.user.sub
         const recipe = this._data
 
+        const isHidden = () =>
+            userID && userID === recipe.userID ? '' : 'hidden'
+
+        const isBookmarked = () => (this._data.bookmarked ? '-fill' : '')
+
         return `
       <figure class="recipe__fig">
         <img src="${this._data.image}" alt="${
@@ -57,7 +61,7 @@ class RecipeView extends View {
       <div class="recipe__details">
         <div class="recipe__info">
           <svg class="recipe__info-icon">
-            <use href="${icons}#icon-clock"></use>
+            <use href="./img/icons.svg#icon-clock"></use>
           </svg>
           <span class="recipe__info-data recipe__info-data--minutes">${
               this._data.cookingTime
@@ -66,7 +70,7 @@ class RecipeView extends View {
         </div>
         <div class="recipe__info">
           <svg class="recipe__info-icon">
-            <use href="${icons}#icon-users"></use>
+            <use href="./img/icons.svg#icon-users"></use>
           </svg>
           <span class="recipe__info-data recipe__info-data--people">${
               this._data.servings
@@ -78,38 +82,36 @@ class RecipeView extends View {
                 this._data.servings - 1
             }">
               <svg>
-                <use href="${icons}#icon-minus-circle"></use>
+                <use href="./img/icons.svg#icon-minus-circle"></use>
               </svg>
             </button>
             <button class="btn--tiny btn--update-servings" data-update-to="${
                 this._data.servings + 1
             }">
               <svg>
-                <use href="${icons}#icon-plus-circle"></use>
+                <use href="./img/icons.svg#icon-plus-circle"></use>
               </svg>
             </button>
           </div>
         </div>
 
         <button class="btn--round btn--bookmark">
-          <svg class="">
-            <use href="${icons}#icon-bookmark${
-            this._data.bookmarked ? '-fill' : ''
-        }"></use>
+          <svg>
+            <use href="./img/icons.svg#icon-bookmark${isBookmarked()}"/>
           </svg>
         </button>
 
-        <button class="btn btn--delete ${
-            userID && userID === recipe.userID ? '' : 'hidden'
-        }">
-          Delete
+        <button class="btn--round btn--delete ${isHidden()}">
+          <svg>
+            <use href="./img/icons.svg#icon-delete"/>
+          </svg>
         </button>
 
-        <button class="btn btn--edit ${
-            userID && userID === recipe.userID ? '' : 'hidden'
-        }">
-        Edit
-      </button>
+        <button class="btn--round btn--edit ${isHidden()}">
+          <svg>
+            <use href="./img/icons.svg#icon-edit"/>
+          </svg>
+        </button>
       </div>
 
       <div class="recipe__ingredients">
@@ -131,7 +133,7 @@ class RecipeView extends View {
         return `
     <li class="recipe__ingredient">
       <svg class="recipe__icon">
-        <use href="${icons}#icon-check"></use>
+        <use href="./img/icons.svg#icon-check"></use>
       </svg>
       <div class="recipe__quantity">${
           ing.quantity ? new Fraction(ing.quantity).toString() : ''
